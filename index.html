@@ -10,3 +10,82 @@
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap"
 />
+<style>
+  /* Layout: a motion-design "edit". Light steel base reel, each employer is a full-bleed chapter
+   with its own scoped theme tokens, the same way the work itself themes one system per brand. */
+  :root {
+    color-scheme: light;
+    --paper: #e6e8ec;
+    --paper-2: #d7dae1;
+    --ink: #11131a;
+    --ink-2: #4b5060;
+    --line: rgba(17, 19, 26, 0.14);
+    --accent: #2f45ff;
+    --accent-ink: #ffffff;
+    --blush: #ff8fb1;
+
+    /* Sally Beauty / CosmoProf chapter */
+    --s-bg: #24101f;
+    --s-bg-2: #34182e;
+    --s-fg: #f7e9ef;
+    --s-mute: #c9a9b9;
+    --s-accent: #ff8fb1;
+    --s-gold: #d8b673;
+
+    /* Good Sam chapter */
+    --g-bg: #10241b;
+    --g-bg-2: #183327;
+    --g-fg: #eef2e6;
+    --g-mute: #a9bcae;
+    --g-accent: #ffb23f;
+    --g-red: #ef5638;
+
+    --f-display: "Anybody", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    --f-body: "Geist", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --f-mono: "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+    --loop: 9s;
+  }
+
+  /* Registered properties so CSS can interpolate tokens, counters and timecode. */
+  @property --tb {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #fbeff3;
+  }
+  @property --tf {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #3a1033;
+  }
+  @property --ta {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #b0186a;
+  }
+  @property --tr {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 18px;
+  }
+  @property --n {
+    syntax: "<integer>";
+    inherits: false;
+    initial-value: 0;
+  }
+  @property --sec {
+    syntax: "<integer>";
+    inherits: false;
+    initial-value: 0;
+  }
+  @property --fr {
+    syntax: "<integer>";
+    inherits: false;
+    initial-value: 0;
+  }
+
+</style>
+
