@@ -1541,6 +1541,331 @@
     }
   }
 
+  /* Multi-brand theme demo */
+  .brands {
+    position: relative;
+    padding: clamp(14px, 2vw, 22px);
+    border-radius: 24px;
+    background: var(--s-bg-2);
+    border: 1px solid rgba(247, 233, 239, 0.1);
+  }
+  .switch {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+  }
+  .toggle {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .toggle span {
+    position: relative;
+    z-index: 1;
+    padding: 6px 12px;
+    text-align: center;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  .toggle span:nth-child(1) {
+    animation: tgA 10s var(--ease-io) infinite;
+  }
+  .toggle span:nth-child(2) {
+    animation: tgB 10s var(--ease-io) infinite;
+  }
+  .toggle::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    border-radius: 999px;
+    background: var(--s-fg);
+    animation: knob 10s var(--ease-io) infinite;
+  }
+  @keyframes knob {
+    0%,
+    42% {
+      transform: none;
+    }
+    50%,
+    92% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: none;
+    }
+  }
+  @keyframes tgA {
+    0%,
+    42% {
+      color: var(--s-bg);
+    }
+    50%,
+    92% {
+      color: var(--s-fg);
+    }
+    100% {
+      color: var(--s-bg);
+    }
+  }
+  @keyframes tgB {
+    0%,
+    42% {
+      color: var(--s-fg);
+    }
+    50%,
+    92% {
+      color: var(--s-bg);
+    }
+    100% {
+      color: var(--s-fg);
+    }
+  }
+
+  .themed {
+    --tb: #fbeff3;
+    --tf: #3a1033;
+    --ta: #b0186a;
+    --tr: 18px;
+    background: var(--tb);
+    color: var(--tf);
+    border-radius: calc(var(--tr) + 4px);
+    padding: clamp(14px, 2.4vw, 24px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 14px;
+    animation: brand 10s var(--ease-io) infinite;
+  }
+  @media (max-width: 520px) {
+    .themed {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @keyframes brand {
+    0%,
+    42% {
+      --tb: #fbeff3;
+      --tf: #3a1033;
+      --ta: #b0186a;
+      --tr: 18px;
+      font-family: var(--f-body);
+    }
+    50%,
+    92% {
+      --tb: #121212;
+      --tf: #f3efe6;
+      --ta: #d8b673;
+      --tr: 0px;
+      font-family: var(--f-display);
+    }
+    100% {
+      --tb: #fbeff3;
+      --tf: #3a1033;
+      --ta: #b0186a;
+      --tr: 18px;
+      font-family: var(--f-body);
+    }
+  }
+  .promo {
+    border-radius: var(--tr);
+    background: color-mix(in srgb, var(--ta) 16%, var(--tb));
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+  }
+  .promo::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -50px;
+    bottom: -60px;
+    border-radius: 50%;
+    background: var(--ta);
+    opacity: 0.9;
+    animation: blob 10s var(--ease-io) infinite;
+  }
+  @keyframes blob {
+    0%,
+    42% {
+      border-radius: 50%;
+      transform: none;
+    }
+    50%,
+    92% {
+      border-radius: 0;
+      transform: rotate(45deg) scale(0.8);
+    }
+    100% {
+      border-radius: 50%;
+      transform: none;
+    }
+  }
+  .promo small {
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ta);
+  }
+  .promo h4 {
+    margin: 6px 0 0;
+    font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings:
+      "wdth" 85,
+      "wght" 750;
+    position: relative;
+    z-index: 1;
+  }
+  .promo .go {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    padding: 9px 16px;
+    border-radius: var(--tr);
+    background: var(--tf);
+    color: var(--tb);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .tile {
+    border-radius: var(--tr);
+    border: 1px solid color-mix(in srgb, var(--tf) 14%, transparent);
+    padding: 12px;
+    display: grid;
+    gap: 8px;
+    align-content: start;
+  }
+  .tile .img {
+    aspect-ratio: 1;
+    border-radius: calc(var(--tr) * 0.7);
+    background: radial-gradient(
+      circle at 40% 35%,
+      color-mix(in srgb, var(--ta) 45%, var(--tb)),
+      color-mix(in srgb, var(--ta) 85%, var(--tf))
+    );
+    position: relative;
+  }
+  .tile .img::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 22%;
+    bottom: 14%;
+    width: 26%;
+    translate: -50% 0;
+    border-radius: calc(var(--tr) * 0.4);
+    background: color-mix(in srgb, var(--tb) 85%, transparent);
+  }
+  .tile .t {
+    height: 8px;
+    width: 80%;
+    border-radius: 4px;
+    background: var(--tf);
+    opacity: 0.8;
+  }
+  .tile .t.s {
+    width: 50%;
+    opacity: 0.35;
+  }
+  .tile .stars {
+    display: flex;
+    gap: 3px;
+  }
+  .tile .stars i {
+    width: 9px;
+    height: 9px;
+    background: var(--ta);
+    clip-path: polygon(
+      50% 0,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+  .tile .add {
+    margin-top: 4px;
+    padding: 8px;
+    text-align: center;
+    border-radius: var(--tr);
+    background: var(--ta);
+    color: var(--tb);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  .tokens-live {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+    font-family: var(--f-mono);
+    font-size: 0.64rem;
+  }
+  @media (max-width: 520px) {
+    .tokens-live {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .tokens-live div {
+    padding: 8px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+  .tokens-live i {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: brand 10s var(--ease-io) infinite;
+  }
+  .tokens-live .k1 i {
+    background: var(--tb);
+  }
+  .tokens-live .k2 i {
+    background: var(--tf);
+  }
+  .tokens-live .k3 i {
+    background: var(--ta);
+  }
+  .tokens-live .k4 i {
+    background: transparent;
+    border: 2px solid var(--s-fg);
+    border-radius: var(--tr);
+  }
+  .tokens-live span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -1845,6 +2170,42 @@
           </div>
         </div>
 
+        <figure class="reveal" style="margin: 0">
+          <div class="brands">
+            <div class="switch">
+              <span class="muted">One component · two brand themes</span>
+              <div class="toggle" aria-hidden="true">
+                <span>Sally</span><span>CosmoProf</span>
+              </div>
+            </div>
+            <div class="themed" aria-hidden="true">
+              <div class="promo">
+                <div>
+                  <small>New arrivals</small>
+                  <h4>Color that lasts all season</h4>
+                </div>
+                <span class="go">Shop now</span>
+              </div>
+              <div class="tile">
+                <div class="img"></div>
+                <div class="t"></div>
+                <div class="t s"></div>
+                <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="add">Add to bag</div>
+              </div>
+            </div>
+            <div class="tokens-live" aria-hidden="true">
+              <div class="k1"><i></i><span>--surface</span></div>
+              <div class="k2"><i></i><span>--on-surface</span></div>
+              <div class="k3"><i></i><span>--brand</span></div>
+              <div class="k4"><i></i><span>--radius</span></div>
+            </div>
+          </div>
+          <figcaption class="cap">
+            Illustration: the same markup re-themed only by swapping token
+            values
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
