@@ -2156,6 +2156,177 @@
     color: var(--g-mute);
   }
 
+  /* CMS flow */
+  .flow-wrap {
+    margin-top: clamp(40px, 6vw, 72px);
+  }
+  .flow-wrap h3,
+  .build h3 {
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 80,
+      "wght" 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 28px;
+  }
+  .node {
+    position: relative;
+    padding: 18px 16px 18px 0;
+  }
+  .node .dot {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--g-accent);
+    background: var(--g-bg);
+    z-index: 1;
+    animation: nodePulse 6s var(--ease-io) infinite;
+    animation-delay: calc(var(--i) * 1.5s);
+  }
+  @keyframes nodePulse {
+    0%,
+    20%,
+    100% {
+      background: var(--g-bg);
+      box-shadow: 0 0 0 0 rgba(255, 178, 63, 0);
+    }
+    8% {
+      background: var(--g-accent);
+      box-shadow: 0 0 0 10px rgba(255, 178, 63, 0.12);
+    }
+  }
+  .node:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    right: 0;
+    top: 25px;
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(238, 242, 230, 0.35) 0 6px,
+      transparent 6px 12px
+    );
+    background-size: 24px 2px;
+    animation: dash 1s linear infinite;
+  }
+  @keyframes dash {
+    to {
+      background-position: 24px 0;
+    }
+  }
+  .node:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--g-accent);
+    box-shadow: 0 0 12px var(--g-accent);
+    animation: travel 6s var(--ease-io) infinite;
+    animation-delay: calc(var(--i) * 1.5s);
+    opacity: 0;
+  }
+  @keyframes travel {
+    0% {
+      left: 16px;
+      opacity: 0;
+    }
+    4% {
+      opacity: 1;
+    }
+    22% {
+      left: calc(100% - 10px);
+      opacity: 1;
+    }
+    25%,
+    100% {
+      left: calc(100% - 10px);
+      opacity: 0;
+    }
+  }
+  .node h5 {
+    margin: 14px 0 4px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .node p {
+    margin: 0;
+    font-size: 0.88rem;
+    max-width: 26ch;
+  }
+  @media (max-width: 720px) {
+    .flow {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .node {
+      padding: 0 0 26px 34px;
+    }
+    .node .dot {
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+    .node h5 {
+      margin-top: 0;
+    }
+    .node:not(:last-child)::before {
+      left: 7px;
+      right: auto;
+      top: 18px;
+      bottom: 0;
+      width: 2px;
+      height: auto;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(238, 242, 230, 0.35) 0 6px,
+        transparent 6px 12px
+      );
+      background-size: 2px 24px;
+      animation: dashV 1s linear infinite;
+    }
+    @keyframes dashV {
+      to {
+        background-position: 0 24px;
+      }
+    }
+    .node:not(:last-child)::after {
+      left: 3px;
+      top: 18px;
+      animation-name: travelV;
+    }
+    @keyframes travelV {
+      0% {
+        top: 18px;
+        opacity: 0;
+      }
+      4% {
+        opacity: 1;
+      }
+      22% {
+        top: calc(100% - 4px);
+        opacity: 1;
+      }
+      25%,
+      100% {
+        top: calc(100% - 4px);
+        opacity: 0;
+      }
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -2647,6 +2818,42 @@
               Form field
             </div>
             <div class="cmp more" style="--i: 11">+ 80 more</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-wrap reveal">
+        <h3>From design file to published page</h3>
+        <p class="muted" style="margin: 0; max-width: 56ch">
+          How a component moved through the pipeline, so marketing could build
+          pages with it on their own.
+        </p>
+        <div class="flow">
+          <div class="node" style="--i: 0">
+            <div class="dot"></div>
+            <h5>Design spec</h5>
+            <p class="muted">
+              States, breakpoints and tokens agreed with design.
+            </p>
+          </div>
+          <div class="node" style="--i: 1">
+            <div class="dot"></div>
+            <h5>Storybook</h5>
+            <p class="muted">
+              Built with Radix and shadcn/ui, documented and reviewed.
+            </p>
+          </div>
+          <div class="node" style="--i: 2">
+            <div class="dot"></div>
+            <h5>Payload block</h5>
+            <p class="muted">
+              Exposed to the CMS with fields that editors understand.
+            </p>
+          </div>
+          <div class="node" style="--i: 3">
+            <div class="dot"></div>
+            <h5>Next.js on Vercel</h5>
+            <p class="muted">Marketing publishes the page without a ticket.</p>
           </div>
         </div>
       </div>
