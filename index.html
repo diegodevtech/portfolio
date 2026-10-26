@@ -1916,6 +1916,246 @@
     fill: var(--paper);
   }
 
+  .lib {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+  .counter-box {
+    padding: clamp(20px, 3vw, 32px);
+    border-radius: 24px;
+    background: var(--g-bg-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+  }
+  .count {
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 60,
+      "wght" 900;
+    font-size: clamp(6rem, 16vw, 12rem);
+    line-height: 0.8;
+    color: var(--g-accent);
+    --n: 90;
+    counter-reset: n var(--n);
+    font-variant-numeric: tabular-nums;
+  }
+  .count::after {
+    content: counter(n) "+";
+  }
+  @supports (animation-timeline: view()) {
+    .count {
+      animation: count linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+  }
+  @supports not (animation-timeline: view()) {
+    .count {
+      animation: count 2.6s var(--ease-out) 0.3s backwards;
+    }
+  }
+  @keyframes count {
+    from {
+      --n: 0;
+      font-variation-settings:
+        "wdth" 150,
+        "wght" 200;
+    }
+    to {
+      --n: 90;
+      font-variation-settings:
+        "wdth" 60,
+        "wght" 900;
+    }
+  }
+  .counter-box p {
+    margin: 0;
+    font-size: 1.05rem;
+    max-width: 32ch;
+  }
+
+  .wall {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    border-radius: 24px;
+    background: var(--g-bg-2);
+  }
+  @media (max-width: 560px) {
+    .wall {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .cmp {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 92px;
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(238, 242, 230, 0.05);
+    border: 1px solid rgba(238, 242, 230, 0.08);
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    overflow: hidden;
+    transition:
+      transform 0.45s var(--ease-spring),
+      background-color 0.35s,
+      color 0.35s;
+    animation: tileGlow 8s var(--ease-io) infinite;
+    animation-delay: calc(var(--i) * 0.33s);
+  }
+  .cmp:hover {
+    transform: translateY(-4px) scale(1.03);
+    background: var(--g-accent);
+    color: var(--g-bg);
+  }
+  @keyframes tileGlow {
+    0%,
+    8%,
+    100% {
+      border-color: rgba(238, 242, 230, 0.08);
+    }
+    4% {
+      border-color: var(--g-accent);
+    }
+  }
+  .cmp .g {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+  }
+  .cmp .g b {
+    display: block;
+    height: 8px;
+    border-radius: 3px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+  .cmp.btn-c .g b {
+    height: 20px;
+    width: 60%;
+    border-radius: 999px;
+    opacity: 0.9;
+    background: var(--g-accent);
+  }
+  .cmp.acc .g {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    height: auto;
+  }
+  .cmp.acc .g b {
+    height: 5px;
+  }
+  .cmp.tabs .g b {
+    width: 22%;
+    height: 6px;
+  }
+  .cmp.tabs .g b:first-child {
+    opacity: 1;
+    background: var(--g-accent);
+  }
+  .cmp.badge .g b {
+    width: 36%;
+    height: 12px;
+    border-radius: 999px;
+  }
+  .cmp.tog .g b {
+    width: 34px;
+    height: 18px;
+    border-radius: 999px;
+    opacity: 0.3;
+    position: relative;
+  }
+  .cmp.tog .g b::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--g-fg);
+    animation: togg 3s var(--ease-io) infinite;
+  }
+  @keyframes togg {
+    0%,
+    40% {
+      transform: none;
+    }
+    50%,
+    90% {
+      transform: translateX(16px);
+    }
+    100% {
+      transform: none;
+    }
+  }
+  .cmp.star .g b {
+    width: 12px;
+    height: 12px;
+    border-radius: 0;
+    opacity: 0.9;
+    background: var(--g-accent);
+    clip-path: polygon(
+      50% 0,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+  .cmp.step .g b {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .cmp.step .g b:nth-child(-n + 2) {
+    opacity: 1;
+    background: var(--g-accent);
+  }
+  .cmp.carousel .g b {
+    width: 26%;
+    height: 20px;
+  }
+  .cmp.carousel .g {
+    animation: slide 4s var(--ease-io) infinite;
+  }
+  @keyframes slide {
+    0%,
+    40% {
+      transform: none;
+    }
+    50%,
+    90% {
+      transform: translateX(-30%);
+    }
+    100% {
+      transform: none;
+    }
+  }
+  .cmp.more {
+    background: transparent;
+    border-style: dashed;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--g-mute);
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -2347,6 +2587,68 @@
           </div>
         </div>
 
+        <div class="lib">
+          <div class="counter-box reveal-x">
+            <div class="count" aria-hidden="true"></div>
+            <p>
+              <span class="sr">90+ components. </span>Components in one shared
+              library, documented in Storybook and used across the company.
+            </p>
+          </div>
+          <div
+            class="wall reveal"
+            role="group"
+            aria-label="Examples of the kinds of building blocks in the library"
+          >
+            <div class="cmp btn-c" style="--i: 0">
+              <div class="g"><b></b></div>
+              Button
+            </div>
+            <div class="cmp acc" style="--i: 1">
+              <div class="g"><b></b><b></b><b></b></div>
+              Accordion
+            </div>
+            <div class="cmp tabs" style="--i: 2">
+              <div class="g"><b></b><b></b><b></b></div>
+              Tabs
+            </div>
+            <div class="cmp tog" style="--i: 3">
+              <div class="g"><b></b></div>
+              Switch
+            </div>
+            <div class="cmp carousel" style="--i: 4">
+              <div class="g"><b></b><b></b><b></b><b></b></div>
+              Carousel
+            </div>
+            <div class="cmp badge" style="--i: 5">
+              <div class="g"><b></b><b style="width: 24%"></b></div>
+              Badge
+            </div>
+            <div class="cmp star" style="--i: 6">
+              <div class="g"><b></b><b></b><b></b><b></b><b></b></div>
+              Rating
+            </div>
+            <div class="cmp step" style="--i: 7">
+              <div class="g"><b></b><b></b><b></b><b></b></div>
+              Stepper
+            </div>
+            <div class="cmp acc" style="--i: 8">
+              <div class="g">
+                <b style="width: 70%"></b><b style="width: 40%"></b>
+              </div>
+              Hero block
+            </div>
+            <div class="cmp tabs" style="--i: 9">
+              <div class="g"><b></b><b></b><b></b><b></b></div>
+              Plan compare
+            </div>
+            <div class="cmp badge" style="--i: 10">
+              <div class="g"><b style="width: 80%; height: 8px"></b></div>
+              Form field
+            </div>
+            <div class="cmp more" style="--i: 11">+ 80 more</div>
+          </div>
+        </div>
       </div>
 
     </div>
