@@ -337,6 +337,95 @@
     }
   }
 
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-block: clamp(40px, 7vw, 96px) clamp(40px, 6vw, 80px);
+  }
+  @media (max-width: 960px) {
+    .hero .wrap {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .leak {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+  .leak.a {
+    width: 46vw;
+    height: 46vw;
+    max-width: 620px;
+    max-height: 620px;
+    background: var(--accent);
+    top: -18vw;
+    right: -10vw;
+    opacity: 0.18;
+    animation: drift 18s var(--ease-io) infinite alternate;
+  }
+  .leak.b {
+    width: 34vw;
+    height: 34vw;
+    max-width: 460px;
+    max-height: 460px;
+    background: var(--blush);
+    bottom: -14vw;
+    left: -8vw;
+    opacity: 0.28;
+    animation: drift 22s var(--ease-io) -6s infinite alternate-reverse;
+  }
+  @keyframes drift {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-6vw, 4vw) scale(1.15);
+    }
+    100% {
+      transform: translate(4vw, -3vw) scale(0.92);
+    }
+  }
+
+  .eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    color: var(--ink-2);
+  }
+  .type {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--accent);
+    width: calc(22ch + 22 * 0.06em + 4px);
+    animation:
+      typing 1.6s steps(22) 0.5s backwards,
+      caret 0.8s steps(1) infinite;
+    color: var(--ink);
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  @keyframes caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -358,3 +447,20 @@
   </div>
 </header>
 
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="hero-name">
+    <div class="leak a" aria-hidden="true"></div>
+    <div class="leak b" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow mono">
+          <span class="type">Lead Frontend Engineer</span>
+          <span>Brazil → remote with US brands</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
