@@ -1295,6 +1295,199 @@
     }
   }
 
+  /* ---------- Chapters ---------- */
+  .chapter {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+  }
+  .chapter > .wrap {
+    padding-block: clamp(64px, 10vw, 140px);
+  }
+  .ch-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 16px 32px;
+    margin-bottom: clamp(36px, 6vw, 72px);
+  }
+  @media (max-width: 720px) {
+    .ch-head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .ch-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .pill.live::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: blink 1.4s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0.2;
+    }
+  }
+  .ch-head > div:first-child {
+    container-type: inline-size;
+    min-width: 0;
+  }
+  .ch-title {
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 72,
+      "wght" 800;
+    font-size: clamp(2.2rem, 12cqi, 7.4rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .ch-title .line {
+    display: block;
+    white-space: nowrap;
+  }
+  .ch-title em {
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 105,
+      "wght" 250;
+  }
+  .ch-sites {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .site {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: var(--f-mono);
+    font-size: 0.82rem;
+    border: 1px solid currentColor;
+    transition:
+      background-color 0.4s var(--ease-out),
+      color 0.4s,
+      transform 0.4s var(--ease-spring);
+  }
+  .site .arr {
+    transition: transform 0.4s var(--ease-out);
+  }
+  .site:hover {
+    transform: translateX(6px);
+  }
+  .site:hover .arr {
+    transform: rotate(-45deg);
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .split {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .intro {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    line-height: 1.45;
+    max-width: 36ch;
+    margin: 0 0 28px;
+    text-wrap: pretty;
+  }
+  .points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+  .points li {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+    max-width: 62ch;
+  }
+  .points li::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    margin-top: 5px;
+    border: 1.5px solid var(--hi);
+    border-radius: 4px;
+    transform: rotate(45deg);
+    transition:
+      transform 0.6s var(--ease-spring),
+      background-color 0.3s;
+  }
+  .points li:hover::before {
+    transform: rotate(225deg);
+    background: var(--hi);
+  }
+  .points b {
+    font-weight: 600;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+  }
+  .stack span {
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--chip);
+    font-family: var(--f-mono);
+    font-size: 0.74rem;
+    transition:
+      transform 0.35s var(--ease-spring),
+      background-color 0.3s,
+      color 0.3s;
+  }
+  .stack span:hover {
+    transform: translateY(-3px) rotate(-2deg);
+    background: var(--hi);
+    color: var(--hi-ink);
+  }
+
+  .cap {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin: 14px 0 0;
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
