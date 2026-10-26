@@ -426,6 +426,76 @@
     }
   }
 
+  .hero-copy {
+    container-type: inline-size;
+    min-width: 0;
+  }
+  .name {
+    font-family: var(--f-display);
+    font-weight: 800;
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 800;
+    font-size: clamp(3rem, 23cqi, 11.5rem);
+    line-height: 0.84;
+    letter-spacing: -0.035em;
+    margin: 18px 0 22px;
+    text-transform: uppercase;
+  }
+  .name .row {
+    display: block;
+    white-space: nowrap;
+    overflow-y: clip;
+    padding-bottom: 0.04em;
+  }
+  .name .row + .row {
+    margin-left: 0.3em;
+  }
+  .ch {
+    display: inline-block;
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 800;
+    transition:
+      font-variation-settings 0.6s var(--ease-out),
+      color 0.4s;
+    animation: rise 1.25s var(--ease-out) backwards;
+    animation-delay: calc(0.35s + var(--i) * 0.06s);
+  }
+  .ch:hover {
+    font-variation-settings:
+      "wdth" 118,
+      "wght" 300;
+    color: var(--accent);
+  }
+  .row.two .ch {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--ink);
+  }
+  .row.two .ch:hover {
+    color: var(--accent);
+    -webkit-text-stroke-color: var(--accent);
+  }
+  @keyframes rise {
+    0% {
+      transform: translateY(105%) rotate(6deg);
+      font-variation-settings:
+        "wdth" 50,
+        "wght" 900;
+    }
+    55% {
+      font-variation-settings:
+        "wdth" 140,
+        "wght" 300;
+    }
+    100% {
+      transform: none;
+      font-variation-settings:
+        "wdth" 100,
+        "wght" 800;
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -458,6 +528,22 @@
           <span class="type">Lead Frontend Engineer</span>
           <span>Brazil → remote with US brands</span>
         </div>
+        <h1 class="name" id="hero-name" aria-label="Diego Cunha">
+          <span class="row one" aria-hidden="true"
+            ><span class="ch" style="--i: 0">D</span
+            ><span class="ch" style="--i: 1">i</span
+            ><span class="ch" style="--i: 2">e</span
+            ><span class="ch" style="--i: 3">g</span
+            ><span class="ch" style="--i: 4">o</span></span
+          >
+          <span class="row two" aria-hidden="true"
+            ><span class="ch" style="--i: 5">C</span
+            ><span class="ch" style="--i: 6">u</span
+            ><span class="ch" style="--i: 7">n</span
+            ><span class="ch" style="--i: 8">h</span
+            ><span class="ch" style="--i: 9">a</span></span
+          >
+        </h1>
       </div>
 
     </div>
