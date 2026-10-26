@@ -1174,6 +1174,60 @@
     }
   }
 
+  /* ---------- Marquee ---------- */
+  .marquee {
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee ul {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .marquee li {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 22px 16px 0;
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 75,
+      "wght" 600;
+    font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .marquee li::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+  .marquee li:nth-child(3n + 2)::before {
+    background: var(--blush);
+  }
+  .marquee li:nth-child(3n)::before {
+    background: var(--g-accent);
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -1363,5 +1417,38 @@
       </figure>
     </div>
   </section>
+
+  <div class="marquee" aria-label="Tech stack">
+    <div class="marquee-track">
+      <ul>
+        <li>Salesforce Commerce Cloud</li>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>TypeScript</li>
+        <li>Radix UI</li>
+        <li>shadcn/ui</li>
+        <li>PayloadCMS</li>
+        <li>Storybook</li>
+        <li>Vercel</li>
+        <li>Design Tokens</li>
+        <li>Accessibility</li>
+        <li>Analytics</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Salesforce Commerce Cloud</li>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>TypeScript</li>
+        <li>Radix UI</li>
+        <li>shadcn/ui</li>
+        <li>PayloadCMS</li>
+        <li>Storybook</li>
+        <li>Vercel</li>
+        <li>Design Tokens</li>
+        <li>Accessibility</li>
+        <li>Analytics</li>
+      </ul>
+    </div>
+  </div>
 
 </main>
