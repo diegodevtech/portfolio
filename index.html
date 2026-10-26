@@ -2467,6 +2467,178 @@
     }
   }
 
+  .iso {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 520px;
+    width: 100%;
+    margin-inline: auto;
+    perspective: 1400px;
+    container-type: inline-size;
+  }
+  /* Planes rise toward the viewer, so sit the base lower to keep the stack centered in its box */
+  .iso-stack {
+    position: absolute;
+    inset: 14%;
+    translate: 0 14cqi;
+    transform-style: preserve-3d;
+    transform: rotateX(58deg) rotateZ(-42deg);
+    animation: isoSpin 20s var(--ease-io) infinite alternate;
+  }
+  @keyframes isoSpin {
+    from {
+      transform: rotateX(58deg) rotateZ(-42deg);
+    }
+    to {
+      transform: rotateX(54deg) rotateZ(-30deg);
+    }
+  }
+  .plane {
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--i) * var(--gap, 34px)));
+    background: color-mix(in srgb, var(--pc) 88%, transparent);
+    border: 1px solid rgba(17, 19, 26, 0.18);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+    animation:
+      explode 10s var(--ease-io) infinite,
+      planeHi 10s var(--ease-io) infinite;
+    animation-delay: 0s, calc(var(--i) * 2s);
+    display: grid;
+    padding: 9%;
+    gap: 6%;
+    align-content: start;
+  }
+  @keyframes explode {
+    0%,
+    100% {
+      --gap: 4cqi;
+    }
+    45%,
+    60% {
+      --gap: 11cqi;
+    }
+  }
+  @property --gap {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 34px;
+  }
+  @keyframes planeHi {
+    0%,
+    20%,
+    100% {
+      filter: none;
+    }
+    4%,
+    16% {
+      filter: brightness(1.12) drop-shadow(0 0 18px var(--pc));
+    }
+  }
+  .plane.p0 {
+    --pc: #c9cdd8;
+  }
+  .plane.p1 {
+    --pc: #b9c3ff;
+  }
+  .plane.p2 {
+    --pc: #ffc0d2;
+  }
+  .plane.p3 {
+    --pc: #ffd59a;
+  }
+  .plane.p4 {
+    --pc: #f4f5f8;
+  }
+  .plane .lbl {
+    position: absolute;
+    right: 7%;
+    bottom: 7%;
+    font-family: var(--f-mono);
+    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  /* Plane contents */
+  .p0 .sw {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6%;
+  }
+  .p0 .sw i {
+    aspect-ratio: 1;
+    border-radius: 30%;
+  }
+  .p0 .sw i:nth-child(1) {
+    background: var(--accent);
+  }
+  .p0 .sw i:nth-child(2) {
+    background: var(--blush);
+  }
+  .p0 .sw i:nth-child(3) {
+    background: var(--g-accent);
+  }
+  .p0 .sw i:nth-child(4) {
+    background: var(--g-bg);
+  }
+  .p0 .sw i:nth-child(5) {
+    background: var(--s-bg);
+  }
+  .p1 .bx {
+    display: flex;
+    gap: 6%;
+  }
+  .p1 .bx i {
+    flex: 1;
+    height: 26px;
+    border-radius: 999px;
+    background: rgba(17, 19, 26, 0.7);
+  }
+  .p1 .bx i:nth-child(2) {
+    background: #fff;
+    border: 1.5px solid rgba(17, 19, 26, 0.6);
+  }
+  .p2 .cd {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6%;
+  }
+  .p2 .cd i {
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.75);
+  }
+  .p3 .pt {
+    display: grid;
+    gap: 6px;
+  }
+  .p3 .pt i {
+    height: 14px;
+    border-radius: 6px;
+    background: rgba(17, 19, 26, 0.25);
+  }
+  .p3 .pt i:first-child {
+    height: 40px;
+    background: rgba(17, 19, 26, 0.65);
+  }
+  .p4 .pg {
+    display: grid;
+    gap: 6px;
+  }
+  .p4 .pg i {
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(17, 19, 26, 0.18);
+  }
+  .p4 .pg i:first-child {
+    height: 52px;
+    border-radius: 10px;
+    background: linear-gradient(120deg, var(--accent), var(--blush));
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -3106,6 +3278,30 @@
             </div>
           </li>
         </ol>
+      </div>
+      <div class="iso" aria-hidden="true">
+        <div class="iso-stack">
+          <div class="plane p0" style="--i: 0">
+            <div class="sw"><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="lbl">Tokens</span>
+          </div>
+          <div class="plane p1" style="--i: 1">
+            <div class="bx"><i></i><i></i></div>
+            <span class="lbl">Primitives</span>
+          </div>
+          <div class="plane p2" style="--i: 2">
+            <div class="cd"><i></i><i></i></div>
+            <span class="lbl">Components</span>
+          </div>
+          <div class="plane p3" style="--i: 3">
+            <div class="pt"><i></i><i></i><i></i></div>
+            <span class="lbl">Patterns</span>
+          </div>
+          <div class="plane p4" style="--i: 4">
+            <div class="pg"><i></i><i></i><i></i><i></i></div>
+            <span class="lbl">Pages</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
