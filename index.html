@@ -1070,6 +1070,110 @@
     }
   }
 
+  /* Timeline under the stage */
+  .tl {
+    padding: 12px 16px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    color: #9aa0b4;
+  }
+  .tl-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .tc {
+    color: #e8eaf2;
+    font-variant-numeric: tabular-nums;
+  }
+  .tc::after {
+    counter-reset: s var(--sec) f var(--fr);
+    content: "00:00:0" counter(s) ":" counter(f, decimal-leading-zero);
+    animation:
+      sec var(--loop) steps(9, end) infinite,
+      fr 1s steps(24, end) infinite;
+  }
+  @keyframes sec {
+    from {
+      --sec: 0;
+    }
+    to {
+      --sec: 9;
+    }
+  }
+  @keyframes fr {
+    from {
+      --fr: 0;
+    }
+    to {
+      --fr: 24;
+    }
+  }
+  .tracks {
+    position: relative;
+    display: grid;
+    gap: 6px;
+  }
+  .track {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+  }
+  .lane {
+    position: relative;
+    height: 14px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .lane .bar {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    border-radius: 3px;
+    left: var(--s);
+    width: var(--w);
+    background: var(--c);
+    opacity: 0.75;
+  }
+  .lane .kf {
+    position: absolute;
+    top: 50%;
+    left: var(--p);
+    width: 7px;
+    height: 7px;
+    background: #e8eaf2;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .playhead {
+    position: absolute;
+    top: -6px;
+    bottom: -4px;
+    left: 80px;
+    right: 0;
+    pointer-events: none;
+  }
+  .playhead::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #ef5638;
+    left: 0;
+    animation: play var(--loop) linear infinite;
+    box-shadow: 0 0 10px #ef5638;
+  }
+  @keyframes play {
+    from {
+      left: 0;
+    }
+    to {
+      left: calc(100% - 2px);
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -1204,6 +1308,57 @@
               stroke-linejoin="round"
             />
           </svg>
+        </div>
+        <div class="tl" aria-hidden="true">
+          <div class="tl-head">
+            <span>Timeline</span><span class="tc"></span>
+          </div>
+          <div class="tracks">
+            <div class="playhead"></div>
+            <div class="track">
+              <span>Tokens</span>
+              <div class="lane">
+                <span
+                  class="bar"
+                  style="--s: 52%; --w: 14%; --c: #2f45ff"
+                ></span
+                ><span class="kf" style="--p: 52%"></span
+                ><span class="kf" style="--p: 64%"></span>
+              </div>
+            </div>
+            <div class="track">
+              <span>Layout</span>
+              <div class="lane">
+                <span class="bar" style="--s: 0%; --w: 22%; --c: #ff8fb1"></span
+                ><span class="kf" style="--p: 0%"></span
+                ><span class="kf" style="--p: 12%"></span
+                ><span class="kf" style="--p: 22%"></span>
+              </div>
+            </div>
+            <div class="track">
+              <span>Content</span>
+              <div class="lane">
+                <span
+                  class="bar"
+                  style="--s: 20%; --w: 26%; --c: #ffb23f"
+                ></span
+                ><span class="kf" style="--p: 20%"></span
+                ><span class="kf" style="--p: 34%"></span
+                ><span class="kf" style="--p: 46%"></span>
+              </div>
+            </div>
+            <div class="track">
+              <span>States</span>
+              <div class="lane">
+                <span
+                  class="bar"
+                  style="--s: 66%; --w: 14%; --c: #1fae63"
+                ></span
+                ><span class="kf" style="--p: 70%"></span
+                ><span class="kf" style="--p: 77%"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </figure>
     </div>
