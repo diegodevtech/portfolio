@@ -184,6 +184,147 @@
     }
   }
 
+  /* ---------- Header ---------- */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    animation: drop 0.9s var(--ease-out) 0.2s backwards;
+  }
+  .top .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 12px;
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .mark b {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 70,
+      "wght" 800;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    transition:
+      transform 0.5s var(--ease-spring),
+      border-radius 0.5s var(--ease-out);
+  }
+  .mark:hover b {
+    transform: rotate(-8deg) scale(1.06);
+    border-radius: 50%;
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+  }
+  .nav a {
+    position: relative;
+    text-decoration: none;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    transition: color 0.3s;
+  }
+  .nav a::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 2px;
+    height: 1.5px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-out);
+  }
+  .nav a:hover {
+    color: var(--ink);
+  }
+  .nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .status i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1fae63;
+    position: relative;
+  }
+  .status i::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #1fae63;
+    animation: ping 2s var(--ease-out) infinite;
+  }
+  @keyframes ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(3.2);
+      opacity: 0;
+    }
+  }
+  @media (max-width: 760px) {
+    .nav {
+      display: none;
+    }
+  }
+
+  @keyframes drop {
+    from {
+      transform: translateY(-100%);
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Diego Cunha, back to top"
+      ><b>DC</b><span>Diego Cunha</span></a
+    >
+    <nav class="nav" aria-label="Sections">
+      <a href="#sally">Sally Beauty</a>
+      <a href="#goodsam">Good Sam</a>
+      <a href="#method">How I build</a>
+      <a href="#earlier">Earlier</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="status"><i aria-hidden="true"></i>Open to new roles</span>
+  </div>
+</header>
+
