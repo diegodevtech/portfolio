@@ -1488,6 +1488,59 @@
     margin: 14px 0 0;
   }
 
+  /* ----- Sally Beauty / CosmoProf ----- */
+  .sally {
+    background: var(--s-bg);
+    color: var(--s-fg);
+    --rule: rgba(247, 233, 239, 0.16);
+    --hi: var(--s-accent);
+    --hi-ink: var(--s-bg);
+    --chip: rgba(247, 233, 239, 0.08);
+  }
+  .sally .site {
+    color: var(--s-fg);
+  }
+  .sally .site:hover {
+    background: var(--s-fg);
+    color: var(--s-bg);
+  }
+  .sally .pill {
+    color: var(--s-accent);
+  }
+  .sally .ch-title em {
+    color: var(--s-accent);
+  }
+  .sally .muted {
+    color: var(--s-mute);
+  }
+  .sally .ring {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 143, 177, 0.18);
+  }
+  .sally .ring.r1 {
+    width: 900px;
+    height: 900px;
+    right: -420px;
+    top: -300px;
+    animation: spin 60s linear infinite;
+    border-style: dashed;
+  }
+  .sally .ring.r2 {
+    width: 600px;
+    height: 600px;
+    right: -270px;
+    top: -150px;
+    border-color: rgba(216, 182, 115, 0.2);
+    animation: spin 40s linear infinite reverse;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -1710,5 +1763,90 @@
       </ul>
     </div>
   </div>
+
+  <!-- ================= SALLY BEAUTY / COSMOPROF ================= -->
+  <section class="chapter sally" id="sally" aria-labelledby="sally-title">
+    <div class="ring r1" aria-hidden="true"></div>
+    <div class="ring r2" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="ch-head">
+        <div>
+          <div class="ch-kicker">
+            <span class="pill live">Now · Jul 2026 to present</span>
+            <span class="mono muted"
+              ><span class="nw">Lead Frontend Engineer</span> ·
+              <span class="nw">via Staffy</span></span
+            >
+          </div>
+          <h2 class="ch-title wipe-title" id="sally-title">
+            <span class="line">Sally Beauty</span
+            ><span class="line"><em>&amp;</em> CosmoProf</span>
+          </h2>
+        </div>
+        <div class="ch-sites">
+          <a
+            class="site"
+            href="https://www.sallybeauty.com/"
+            target="_blank"
+            rel="noopener"
+            >sallybeauty.com <span class="arr" aria-hidden="true">→</span></a
+          >
+          <a
+            class="site"
+            href="https://www.cosmoprofbeauty.com/"
+            target="_blank"
+            rel="noopener"
+            >cosmoprofbeauty.com
+            <span class="arr" aria-hidden="true">→</span></a
+          >
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <p class="intro">
+            I lead frontend for the e-commerce platforms of Sally Beauty, the
+            retail brand, and CosmoProf, its professional channel. Both run on
+            <strong>Salesforce Commerce Cloud</strong>.
+          </p>
+          <ul class="points">
+            <li>
+              <span
+                ><b>Lead frontend delivery</b> on a high-traffic retail
+                storefront: I set the patterns, review the work and raise the
+                output of the whole frontend team.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Build and extend storefront features</b> on SFCC with modern
+                JavaScript and TypeScript.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Turn requirements into UI</b> with product, design and
+                business stakeholders, so it ships accessible, fast and built to
+                convert.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Keep two brands on one consistent codebase</b> as features
+                ship, through component patterns, code review and
+                documentation.</span
+              >
+            </li>
+          </ul>
+          <div class="stack" aria-label="Tech stack">
+            <span>SFCC</span><span>JavaScript</span><span>TypeScript</span
+            ><span>React</span><span>HTML / CSS</span><span>Accessibility</span
+            ><span>Technical leadership</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 </main>
