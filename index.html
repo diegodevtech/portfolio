@@ -1866,6 +1866,56 @@
     white-space: nowrap;
   }
 
+  /* ----- Good Sam ----- */
+  .goodsam {
+    background: var(--g-bg);
+    color: var(--g-fg);
+    --rule: rgba(238, 242, 230, 0.14);
+    --hi: var(--g-accent);
+    --hi-ink: var(--g-bg);
+    --chip: rgba(238, 242, 230, 0.08);
+  }
+  .goodsam .site {
+    color: var(--g-fg);
+  }
+  .goodsam .site:hover {
+    background: var(--g-accent);
+    color: var(--g-bg);
+    border-color: var(--g-accent);
+  }
+  .goodsam .pill {
+    color: var(--g-accent);
+  }
+  .goodsam .ch-title em {
+    color: var(--g-accent);
+  }
+  .goodsam .muted {
+    color: var(--g-mute);
+  }
+  .goodsam {
+    --ridge-h: clamp(48px, 8vw, 120px);
+  }
+  .goodsam > .wrap {
+    padding-top: calc(var(--ridge-h) + clamp(40px, 7vw, 100px));
+  }
+  .ridge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: var(--ridge-h);
+    z-index: -1;
+    opacity: 0.9;
+  }
+  .ridge svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .ridge path {
+    fill: var(--paper);
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -2207,6 +2257,98 @@
           </figcaption>
         </figure>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= GOOD SAM ================= -->
+  <section class="chapter goodsam" id="goodsam" aria-labelledby="gs-title">
+    <div class="ridge" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path
+          d="M0 0H1440V40L1340 86 1250 52 1150 98 1040 44 930 90 820 30 700 96 590 50 470 100 360 40 250 84 140 46 0 92Z"
+        />
+      </svg>
+    </div>
+    <div class="wrap">
+      <div class="ch-head">
+        <div>
+          <div class="ch-kicker">
+            <span class="pill">Sep 2025 to Jul 2026</span>
+            <span class="mono muted"
+              ><span class="nw">Frontend Engineer</span> ·
+              <span class="nw">Camping World / Good Sam</span> ·
+              <span class="nw">via Staffy</span></span
+            >
+          </div>
+          <h2 class="ch-title wipe-title" id="gs-title">
+            <span class="line">Good Sam</span
+            ><em class="line">Design system</em>
+          </h2>
+        </div>
+        <div class="ch-sites">
+          <a
+            class="site"
+            href="https://www.goodsam.com/"
+            target="_blank"
+            rel="noopener"
+            >goodsam.com <span class="arr" aria-hidden="true">→</span></a
+          >
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <p class="intro">
+            On the web platform team I worked on Good Sam's CMS platform and the
+            shared design system behind products like
+            <strong>Roadside Assistance</strong>.
+          </p>
+          <ul class="points">
+            <li>
+              <span
+                ><b>Built and maintained 90+ reusable components</b> in React,
+                Radix UI and shadcn/ui. The whole company uses the library, and
+                UI work got about 25% faster.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Re-architected the PayloadCMS setup</b> so marketing and
+                business teams publish on their own, which cut their dependency
+                on engineering by more than 40%.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Standardized documentation in Storybook</b>, which cut
+                design-to-engineering feedback cycles roughly in half.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Led analytics and event tracking</b> across the site,
+                aligning requirements with the analytics and product
+                teams.</span
+              >
+            </li>
+            <li>
+              <span
+                ><b>Shipped components responsive, accessible and CMS-ready</b>,
+                with Storybook and design specs kept in sync for near-zero
+                rework.</span
+              >
+            </li>
+          </ul>
+          <div class="stack" aria-label="Tech stack">
+            <span>React</span><span>Next.js</span><span>TypeScript</span
+            ><span>Radix UI</span><span>shadcn/ui</span><span>PayloadCMS</span
+            ><span>Storybook</span><span>Vercel</span><span>HTML / CSS</span
+            ><span>Analytics</span>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
