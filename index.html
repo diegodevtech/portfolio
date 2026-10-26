@@ -303,6 +303,34 @@
     }
   }
 
+  .progress {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: env(safe-area-inset-top, 0px);
+    height: 3px;
+    z-index: 55;
+    background: linear-gradient(
+      90deg,
+      var(--accent),
+      var(--blush),
+      var(--g-accent)
+    );
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  @supports (animation-timeline: scroll()) {
+    .progress {
+      animation: grow linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+  @keyframes grow {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
   @keyframes drop {
     from {
       transform: translateY(-100%);
@@ -312,6 +340,8 @@
 </style>
 
 <div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
+
 <header class="top">
   <div class="wrap">
     <a class="mark" href="#top" aria-label="Diego Cunha, back to top"
