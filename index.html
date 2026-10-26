@@ -2392,6 +2392,81 @@
     }
   }
 
+  /* ---------- How I build ---------- */
+  .build {
+    position: relative;
+  }
+  .build > .wrap {
+    padding-block: clamp(64px, 10vw, 140px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 80px);
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .build > .wrap {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .iso {
+      max-width: 380px;
+      margin-top: 16px;
+    }
+  }
+  .build .lead {
+    color: var(--ink-2);
+    max-width: 46ch;
+    margin: 0 0 28px;
+  }
+  .layers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    counter-reset: layer;
+  }
+  .layers li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 8px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    counter-increment: layer;
+    animation: layerHi 10s var(--ease-io) infinite;
+    animation-delay: calc(var(--i) * 2s);
+  }
+  .layers li::before {
+    content: counter(layer, decimal-leading-zero);
+    font-family: var(--f-mono);
+    font-size: 0.78rem;
+    color: var(--ink-2);
+    padding-top: 3px;
+  }
+  .layers b {
+    display: block;
+    font-weight: 600;
+  }
+  .layers span {
+    color: var(--ink-2);
+    font-size: 0.92rem;
+  }
+  @keyframes layerHi {
+    0%,
+    20%,
+    100% {
+      background: transparent;
+    }
+    4%,
+    16% {
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--accent) 10%, transparent),
+        transparent
+      );
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -2953,6 +3028,84 @@
           </header>
           <div class="track-b"><i style="--v: 3%"></i></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW I BUILD ================= -->
+  <section class="build" id="method" aria-labelledby="method-title">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="mono" style="color: var(--ink-2); margin: 0 0 12px">
+          How I build
+        </p>
+        <h3
+          id="method-title"
+          style="
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            text-transform: uppercase;
+            font-variation-settings:
+              &quot;wdth&quot; 72,
+              &quot;wght&quot; 800;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 18px;
+          "
+        >
+          Layers, not one-off pages
+        </h3>
+        <p class="lead">
+          Every storefront I work on is built from the bottom up. Each layer
+          only knows about the one below it, which is what lets one codebase
+          serve two brands, or a CMS hand page-building to marketing.
+        </p>
+        <ol class="layers">
+          <li style="--i: 0">
+            <div>
+              <b>Tokens</b
+              ><span
+                >Color, type, spacing and radius as named values. Re-theming a
+                brand means changing these, not components.</span
+              >
+            </div>
+          </li>
+          <li style="--i: 1">
+            <div>
+              <b>Primitives</b
+              ><span
+                >Accessible building blocks on Radix: buttons, inputs, dialogs,
+                with keyboard and screen-reader support built in.</span
+              >
+            </div>
+          </li>
+          <li style="--i: 2">
+            <div>
+              <b>Components</b
+              ><span
+                >Product cards, accordions, plan tables. Documented in Storybook
+                with every state visible.</span
+              >
+            </div>
+          </li>
+          <li style="--i: 3">
+            <div>
+              <b>Patterns</b
+              ><span
+                >CMS blocks and storefront sections that editors can combine
+                without breaking layout.</span
+              >
+            </div>
+          </li>
+          <li style="--i: 4">
+            <div>
+              <b>Pages</b
+              ><span
+                >Composed, tracked with analytics, and measured for speed and
+                conversion.</span
+              >
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
