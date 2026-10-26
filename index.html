@@ -2639,6 +2639,94 @@
     background: linear-gradient(120deg, var(--accent), var(--blush));
   }
 
+  /* ---------- Earlier work ---------- */
+  .earlier {
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+  }
+  .earlier > .wrap {
+    padding-block: clamp(56px, 8vw, 110px);
+  }
+  .earlier h2 {
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 72,
+      "wght" 800;
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin: 0 0 36px;
+  }
+  .jobs {
+    display: grid;
+    gap: 0;
+  }
+  .job {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 12px 32px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .job::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 1px;
+    width: 100%;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s var(--ease-out);
+  }
+  .job:hover::after {
+    transform: scaleX(1);
+  }
+  @media (max-width: 820px) {
+    .job {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .job time {
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    color: var(--ink-2);
+    padding-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .job h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .job h3 small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    margin-top: 4px;
+  }
+  .job p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+  }
+  .big-num {
+    display: inline-block;
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 80,
+      "wght" 800;
+    color: var(--ink);
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -3303,6 +3391,59 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= EARLIER ================= -->
+  <section class="earlier" id="earlier" aria-labelledby="earlier-title">
+    <div class="wrap">
+      <h2 id="earlier-title" class="reveal-x">Before that</h2>
+      <div class="jobs">
+        <article class="job reveal">
+          <time>May 2024 – Jan 2025</time>
+          <h3>
+            Specialist Software Developer<small>FITec · Manaus, Brazil</small>
+          </h3>
+          <div>
+            <span class="big-num">28,000+</span>
+            <p>
+              farm geometries rendered in a geospatial agribusiness platform,
+              the company's most profitable product at BRL 25M in revenue. I led
+              its frontend and built the GeoServer integration from zero in
+              under a week. React, Leaflet, PostGIS, Recharts.
+            </p>
+          </div>
+        </article>
+        <article class="job reveal">
+          <time>Aug 2022 – May 2024</time>
+          <h3>Fullstack Web Developer<small>ITRIAD · Manaus, Brazil</small></h3>
+          <div>
+            <span class="big-num">13s → 1.7s</span>
+            <p>
+              startup time on a telecom analytics app working over petabytes of
+              data. I modernized legacy apps for clients including LG, Huawei
+              and Compal. React, TypeScript, Redux, Chart.js.
+            </p>
+          </div>
+        </article>
+        <article class="job reveal">
+          <time>Apr 2019 – Aug 2022</time>
+          <h3>
+            Systems Analyst<small>Government of Amazonas (SEDECTI)</small>
+          </h3>
+          <div>
+            <span class="big-num">Portal do Trabalhador</span>
+            <p>
+              I led frontend for the launch of the state's public employment
+              portal, which connects job seekers with open positions. I also
+              built landing pages in React and ran Linux and Windows servers.
+            </p>
+          </div>
+        </article>
+      </div>
+      <p class="mono" style="color: var(--ink-2); margin-top: 28px">
+        Education · Universidade do Estado do Amazonas (UEA)
+      </p>
     </div>
   </section>
 
