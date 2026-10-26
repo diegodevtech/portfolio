@@ -2727,6 +2727,162 @@
     margin-bottom: 6px;
   }
 
+  /* ---------- Contact ---------- */
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+  }
+  .contact > .wrap {
+    padding-block: clamp(72px, 11vw, 150px) 32px;
+  }
+  .contact-head {
+    container-type: inline-size;
+  }
+  .contact h2 {
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 70,
+      "wght" 800;
+    font-size: clamp(2rem, 17cqi, 10rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .contact h2 .line {
+    display: block;
+    white-space: nowrap;
+  }
+  .contact h2 .w {
+    display: inline-block;
+    animation: breathe 6s var(--ease-io) infinite;
+    animation-delay: calc(var(--i) * 0.4s);
+  }
+  .contact h2 .o {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--paper);
+  }
+  /* Weight only, so the line width never grows and never wraps */
+  @keyframes breathe {
+    0%,
+    100% {
+      font-variation-settings:
+        "wdth" 70,
+        "wght" 800;
+    }
+    50% {
+      font-variation-settings:
+        "wdth" 70,
+        "wght" 350;
+    }
+  }
+  .reach {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .mail {
+    font-family: var(--f-mono);
+    font-size: 0.9rem;
+    color: var(--paper);
+    user-select: all;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(230, 232, 236, 0.4);
+    padding-bottom: 2px;
+    transition:
+      color 0.3s,
+      border-color 0.3s;
+  }
+  .mail:hover {
+    color: var(--blush);
+    border-color: var(--blush);
+  }
+  .contact .side {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+  .contact .row-c {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .contact p {
+    max-width: 44ch;
+    margin: 0;
+    color: #b6bbc9;
+  }
+  .contact .btn {
+    border-color: var(--paper);
+    color: var(--paper);
+  }
+  .contact .btn::before {
+    background: var(--paper);
+  }
+  .contact .btn:hover {
+    color: var(--ink);
+  }
+  .contact .btn.solid {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: clamp(56px, 8vw, 100px);
+    padding-top: 20px;
+    border-top: 1px solid rgba(230, 232, 236, 0.14);
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    color: #8b91a3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .orbit {
+    position: absolute;
+    z-index: -1;
+    right: -12vw;
+    top: 50%;
+    width: 52vw;
+    height: 52vw;
+    max-width: 720px;
+    max-height: 720px;
+    translate: 0 -50%;
+    border-radius: 50%;
+    border: 1px solid rgba(230, 232, 236, 0.08);
+    animation: spin 50s linear infinite;
+  }
+  .orbit::before,
+  .orbit::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+  }
+  .orbit::before {
+    width: 14px;
+    height: 14px;
+    top: -7px;
+    left: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 30px var(--accent);
+  }
+  .orbit::after {
+    width: 10px;
+    height: 10px;
+    bottom: 14%;
+    left: 8%;
+    background: var(--blush);
+    box-shadow: 0 0 20px var(--blush);
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -3447,4 +3603,53 @@
     </div>
   </section>
 
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="orbit" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="mono" style="color: #8b91a3; margin: 0 0 18px">Contact</p>
+      <div class="contact-head">
+        <h2 id="contact-title">
+          <span class="line"
+            ><span class="w" style="--i: 0">Let's build</span>
+            <span class="w o" style="--i: 1">your</span></span
+          ><span class="line"
+            ><span class="w o" style="--i: 2">next</span>
+            <span class="w" style="--i: 3">storefront</span></span
+          >
+        </h2>
+      </div>
+      <div class="row-c">
+        <p>
+          I'm open to Lead Frontend, Frontend and Software Engineer roles,
+          working remote with US teams. Email me or send a message on LinkedIn.
+        </p>
+        <div class="side">
+          <a class="mail" href="mailto:diegocunhaam@gmail.com"
+            >diegocunhaam@gmail.com</a
+          >
+          <div class="reach">
+            <a
+              class="btn solid"
+              href="https://www.linkedin.com/in/diego-cunha-dev/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn <span class="arr" aria-hidden="true">→</span></a
+            >
+            <a
+              class="btn"
+              href="https://github.com/diegodevtech"
+              target="_blank"
+              rel="noopener"
+              >GitHub <span class="arr" aria-hidden="true">→</span></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="foot">
+        <span>© 2026 Diego Cunha</span>
+        <span>Animated with CSS only</span>
+      </div>
+    </div>
+  </section>
 </main>
