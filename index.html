@@ -614,6 +614,462 @@
     }
   }
 
+  /* Hero artboard: a component building itself, After Effects style */
+  .studio {
+    position: relative;
+    border-radius: 22px;
+    background: var(--ink);
+    color: #e8eaf2;
+    box-shadow: 0 40px 80px -30px rgba(17, 19, 26, 0.45);
+    overflow: hidden;
+    animation: studioIn 1.4s var(--ease-out) 0.6s backwards;
+  }
+  @keyframes studioIn {
+    from {
+      clip-path: inset(50% 50% 50% 50% round 22px);
+      transform: rotate(-3deg) scale(0.9);
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 22px);
+    }
+  }
+  .studio-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    color: #9aa0b4;
+  }
+  .studio-bar i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3a3f50;
+  }
+  .studio-bar i:nth-child(1) {
+    background: #ef5638;
+  }
+  .studio-bar i:nth-child(2) {
+    background: #ffb23f;
+  }
+  .studio-bar i:nth-child(3) {
+    background: #1fae63;
+  }
+  .studio-bar span {
+    margin-left: auto;
+  }
+
+  .stage {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    max-width: 100%;
+    background-color: #191c26;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.07) 1px,
+      transparent 1px
+    );
+    background-size: 18px 18px;
+    display: grid;
+    place-items: center;
+  }
+  .card {
+    position: relative;
+    width: 58%;
+    padding: 4.5%;
+    border-radius: 16px;
+    background: #f4f5f8;
+    color: var(--ink);
+    display: grid;
+    gap: 10px;
+    animation: cardIn var(--loop) var(--ease-out) infinite;
+  }
+  .card-outline {
+    position: absolute;
+    inset: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    overflow: visible;
+    pointer-events: none;
+  }
+  .card-outline rect {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 5;
+    animation: outline var(--loop) linear infinite;
+  }
+  .media {
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--blush), #ffc9a8 50%, #b9c3ff);
+    position: relative;
+    overflow: hidden;
+    animation: wipe var(--loop) var(--ease-out) infinite;
+  }
+  .media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.65) 50%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    animation: sheen var(--loop) var(--ease-io) infinite;
+  }
+  .media .bottle {
+    position: absolute;
+    left: 50%;
+    bottom: 12%;
+    width: 22%;
+    height: 62%;
+    translate: -50% 0;
+    border-radius: 10px 10px 8px 8px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: inset -6px 0 0 rgba(17, 19, 26, 0.08);
+  }
+  .media .bottle::before {
+    content: "";
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: -16%;
+    height: 18%;
+    border-radius: 4px 4px 0 0;
+    background: var(--ink);
+  }
+  .ln {
+    height: 9px;
+    border-radius: 6px;
+    background: var(--ink);
+    transform-origin: left;
+  }
+  .ln.l1 {
+    width: 82%;
+    animation: ln1 var(--loop) var(--ease-out) infinite;
+  }
+  .ln.l2 {
+    width: 54%;
+    opacity: 0.35;
+    animation: ln2 var(--loop) var(--ease-out) infinite;
+  }
+  .row-b {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .price {
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 80,
+      "wght" 800;
+    font-size: clamp(0.9rem, 1.6vw, 1.15rem);
+    animation: pop var(--loop) var(--ease-spring) infinite;
+  }
+  .cbtn {
+    position: relative;
+    overflow: hidden;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: clamp(0.6rem, 1.1vw, 0.74rem);
+    font-weight: 600;
+    white-space: nowrap;
+    animation: cbtn var(--loop) var(--ease-out) infinite;
+  }
+  .cbtn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    transform: scale(0);
+    animation: ripple var(--loop) ease-out infinite;
+  }
+
+  .tok {
+    position: absolute;
+    z-index: 2;
+    padding: 5px 9px;
+    border-radius: 7px;
+    font-family: var(--f-mono);
+    font-size: clamp(0.55rem, 1vw, 0.7rem);
+    background: #262a38;
+    color: #dfe3f2;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tok i {
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    background: var(--c);
+  }
+  .tok.t1 {
+    --c: var(--accent);
+    left: 5%;
+    top: 14%;
+    animation: tok1 var(--loop) var(--ease-spring) infinite;
+  }
+  .tok.t2 {
+    --c: var(--blush);
+    right: 4%;
+    top: 30%;
+    animation: tok2 var(--loop) var(--ease-spring) infinite;
+  }
+  .tok.t3 {
+    --c: #f4f5f8;
+    left: 6%;
+    bottom: 18%;
+    animation: tok3 var(--loop) var(--ease-spring) infinite;
+  }
+
+  .cursor {
+    position: absolute;
+    z-index: 3;
+    width: 22px;
+    left: 0;
+    top: 0;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.4));
+    animation: cursor var(--loop) var(--ease-io) infinite;
+    offset-path: none;
+  }
+
+  @keyframes cardIn {
+    0%,
+    2% {
+      transform: scale(0.94);
+      background: transparent;
+    }
+    12%,
+    92% {
+      transform: none;
+      background: #f4f5f8;
+    }
+    100% {
+      transform: scale(0.94);
+      background: transparent;
+    }
+  }
+  @keyframes outline {
+    0% {
+      stroke-dashoffset: 400;
+      opacity: 1;
+    }
+    12% {
+      opacity: 1;
+    }
+    20%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes wipe {
+    0%,
+    8% {
+      clip-path: inset(0 100% 0 0 round 10px);
+    }
+    22%,
+    92% {
+      clip-path: inset(0 0 0 0 round 10px);
+    }
+    100% {
+      clip-path: inset(0 0 0 100% round 10px);
+    }
+  }
+  @keyframes sheen {
+    0%,
+    24% {
+      transform: translateX(-120%);
+    }
+    34%,
+    100% {
+      transform: translateX(120%);
+    }
+  }
+  @keyframes ln1 {
+    0%,
+    20% {
+      transform: scaleX(0);
+    }
+    30%,
+    92% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes ln2 {
+    0%,
+    24% {
+      transform: scaleX(0);
+    }
+    34%,
+    92% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes pop {
+    0%,
+    32% {
+      transform: scale(0);
+    }
+    40%,
+    92% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes cbtn {
+    0%,
+    38% {
+      transform: translateY(14px);
+      opacity: 0;
+      background: #9aa0b4;
+    }
+    46% {
+      transform: none;
+      opacity: 1;
+      background: #9aa0b4;
+    }
+    54%,
+    70% {
+      background: var(--accent);
+      transform: none;
+    }
+    73% {
+      transform: scale(0.92);
+      background: #1f30c9;
+    }
+    77%,
+    92% {
+      transform: none;
+      background: var(--accent);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(14px);
+      opacity: 0;
+    }
+  }
+  @keyframes ripple {
+    0%,
+    72% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    84% {
+      transform: scale(14);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(14);
+      opacity: 0;
+    }
+  }
+  @keyframes tok1 {
+    0%,
+    48% {
+      transform: translate(40%, 120%) scale(0.4);
+      opacity: 0;
+    }
+    56%,
+    90% {
+      transform: none;
+      opacity: 1;
+    }
+    96%,
+    100% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }
+  @keyframes tok2 {
+    0%,
+    52% {
+      transform: translate(-50%, 80%) scale(0.4);
+      opacity: 0;
+    }
+    60%,
+    90% {
+      transform: none;
+      opacity: 1;
+    }
+    96%,
+    100% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }
+  @keyframes tok3 {
+    0%,
+    56% {
+      transform: translate(40%, -100%) scale(0.4);
+      opacity: 0;
+    }
+    64%,
+    90% {
+      transform: none;
+      opacity: 1;
+    }
+    96%,
+    100% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }
+  .cursor {
+    left: 70%;
+    top: 77%;
+  }
+  @keyframes cursor {
+    0%,
+    50% {
+      transform: translate(180px, 140px);
+      opacity: 0;
+    }
+    56% {
+      opacity: 1;
+    }
+    70% {
+      transform: none;
+    }
+    73% {
+      transform: scale(0.8);
+    }
+    77%,
+    86% {
+      transform: none;
+      opacity: 1;
+    }
+    100% {
+      transform: translate(160px, -60px);
+      opacity: 0;
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -703,6 +1159,53 @@
         </div>
       </div>
 
+      <figure
+        class="studio"
+        aria-label="Animation: a product card component assembling itself from design tokens"
+        style="margin: 0"
+      >
+        <div class="studio-bar" aria-hidden="true">
+          <i></i><i></i><i></i><span>ProductCard.tsx · comp 01</span>
+        </div>
+        <div class="stage" aria-hidden="true">
+          <div class="tok t1"><i></i>--color-action</div>
+          <div class="tok t2"><i></i>--color-brand</div>
+          <div class="tok t3"><i></i>--radius-md: 16px</div>
+          <div class="card">
+            <svg
+              class="card-outline"
+              preserveAspectRatio="none"
+              viewBox="0 0 100 100"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="98"
+                height="98"
+                rx="8"
+                vector-effect="non-scaling-stroke"
+                pathLength="400"
+              />
+            </svg>
+            <div class="media"><div class="bottle"></div></div>
+            <div class="ln l1"></div>
+            <div class="ln l2"></div>
+            <div class="row-b">
+              <span class="price">$14.99</span
+              ><span class="cbtn">Add to bag</span>
+            </div>
+          </div>
+          <svg class="cursor" viewBox="0 0 24 24">
+            <path
+              d="M3 2l7.5 19 2.6-7.9L21 10.5z"
+              fill="#fff"
+              stroke="#11131a"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </figure>
     </div>
   </section>
 
