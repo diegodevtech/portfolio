@@ -568,6 +568,52 @@
     transform: translateX(4px) rotate(-45deg);
   }
 
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: clamp(28px, 4vw, 48px);
+    border-top: 1px solid var(--line);
+  }
+  .stat {
+    padding: 16px 14px 4px 0;
+    animation: fadeUp 0.9s var(--ease-out) backwards;
+    animation-delay: calc(1.5s + var(--i) * 0.1s);
+  }
+  .stat + .stat {
+    padding-left: 14px;
+    border-left: 1px solid var(--line);
+  }
+  .stat b {
+    display: block;
+    font-family: var(--f-display);
+    font-variation-settings:
+      "wdth" 80,
+      "wght" 700;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ink-2);
+    margin-top: 6px;
+    line-height: 1.35;
+  }
+  @media (max-width: 560px) {
+    .stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .stat:nth-child(3) {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .stat:nth-child(n + 3) {
+      border-top: 1px solid var(--line);
+    }
+  }
+
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -640,6 +686,20 @@
             rel="noopener"
             >GitHub <span class="arr" aria-hidden="true">→</span></a
           >
+        </div>
+        <div class="stats">
+          <div class="stat" style="--i: 0">
+            <b>8 yrs</b><span>building web apps</span>
+          </div>
+          <div class="stat" style="--i: 1">
+            <b>90+</b><span>components in the Good Sam library</span>
+          </div>
+          <div class="stat" style="--i: 2">
+            <b>40%+</b><span>less CMS dependency on engineering</span>
+          </div>
+          <div class="stat" style="--i: 3">
+            <b>13→1.7s</b><span>app startup time cut at ITRIAD</span>
+          </div>
         </div>
       </div>
 
