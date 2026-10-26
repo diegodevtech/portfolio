@@ -2883,6 +2883,24 @@
     box-shadow: 0 0 20px var(--blush);
   }
 
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .count {
+      --n: 90;
+    }
+    .playhead,
+    .cursor,
+    .card-outline {
+      display: none;
+    }
+  }
 </style>
 
 <div class="grain" aria-hidden="true"></div>
